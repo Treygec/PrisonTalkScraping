@@ -19,8 +19,8 @@ topic_pages_url = "&order=desc&page="
 #           'EXTENDED FAMILY': ["241", 11],
 #           'JUVENILE': ["65", 20]}
 
-topics = {'GENERAL PRISON TALK': ["39", 407]}
-file = 'GENERAL PRISON TALK'
+topics = {'MET WHILE INCARCERATED': ["645", 290]}
+file = 'MET WHILE INCARCERATED'
 
 def create_topic_url(topics):
     url_list = {}
@@ -77,10 +77,10 @@ def extract_first_comment(threads):
             soup = bs4.BeautifulSoup(post_request.text, 'html.parser')
             posts_html = soup.find('div', id='posts')
             first_post_table = posts_html.find('table')
-            first_post = first_post_table('tr')[3]('div')[1].text.encode("utf-8", 'surrogateescape')
+            first_post = first_post_table('tr')[3]('div')[1].text.encode("utf-8", 'surrogatepass')
             username_block = first_post_table('tr')[2].find('a')
-            username = username_block.text.encode("utf-8")
-            posts_dict[base_url+value] = [key.encode("utf-8"), username, first_post]
+            username = username_block.text.encode("utf-8", 'surrogatepass')
+            posts_dict[base_url+value] = [key.encode("utf-8", 'surrogatepass'), username, first_post]
         except AttributeError:
             pass
     return posts_dict
