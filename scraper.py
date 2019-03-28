@@ -19,8 +19,8 @@ topic_pages_url = "&order=desc&page="
 #           'EXTENDED FAMILY': ["241", 11],
 #           'JUVENILE': ["65", 20]}
 
-topics = {'MET WHILE INCARCERATED': ["645", 290]}
-file = 'MET WHILE INCARCERATED'
+topics = {'REMEMBERING THOSE THAT PASSED WHILE IN PRISON': ["1035", 12]}
+file = 'REMEMBERING THOSE THAT PASSED WHILE IN PRISON'
 
 def create_topic_url(topics):
     url_list = {}
@@ -63,7 +63,9 @@ def extract_thread_title_and_url(threads_html):
     for item in threads_html:
         try:
             threads[item.text] = item['href']
-        except AttributeError and TypeError:
+        except AttributeError:
+            pass
+        except TypeError:
             pass
     return threads
 
@@ -82,6 +84,8 @@ def extract_first_comment(threads):
             username = username_block.text.encode("utf-8", 'surrogatepass')
             posts_dict[base_url+value] = [key.encode("utf-8", 'surrogatepass'), username, first_post]
         except AttributeError:
+            pass
+        except TypeError:
             pass
     return posts_dict
 
