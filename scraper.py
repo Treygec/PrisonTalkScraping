@@ -17,10 +17,13 @@ topic_pages_url = "&order=desc&page="
 #           'RAISING CHILDREN WITH PARENTS IN PRISON ': ["94", 79],
 #           'ADULT CHILDREN AND SIBLINGS OF INMATES': ["240", 43],
 #           'EXTENDED FAMILY': ["241", 11],
-#           'JUVENILE': ["65", 20]}
+#           'JUVENILE': ["65", 20],
+#           'Loving a Violent Offender': ["180", 19],
+#           'LOVING A LIFER': ["211", 97],
+#           'Loving a Long-term Sentenced Offender': ["242", 54]}
 
-topics = {'REMEMBERING THOSE THAT PASSED WHILE IN PRISON': ["1035", 12]}
-file = 'REMEMBERING THOSE THAT PASSED WHILE IN PRISON'
+topics = {'Loving a Long-term Sentenced Offender': ["242", 54]}
+file = 'Loving a Long-term Sentenced Offender'
 
 def create_topic_url(topics):
     url_list = {}
@@ -28,7 +31,7 @@ def create_topic_url(topics):
         url_list[f'{key}'] = []
         url_list[f'{key}'].append(value[0])
         url_list[f'{key}'].append(base_url+topics_url+value[0])
-        for i in range(2,value[1]):
+        for i in range(2, value[1]):
             url_list[f'{key}'].append(base_url+topics_url+value[0]+topic_pages_url+str(i))
     return url_list
 
